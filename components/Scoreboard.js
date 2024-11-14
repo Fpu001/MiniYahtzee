@@ -10,7 +10,7 @@ import { DataTable } from 'react-native-paper';
 
 export default Scoreboard = ({navigation, route}) => {
 
-const [scores, setScores] = useState([])
+const [pointsRow, setPointsRow] = useState([])
 const [playerName, setPlayerName] = useState('')
 
 
@@ -22,8 +22,8 @@ useEffect(() => {
 }, [navigation])
 
 useEffect(()=>{
-  if (scores === '' && route.params?.score) {
-    setScores(route.params.score);
+  if (pointsRow === '' && route.params?.points) {
+    setPointsRow(route.params.points);
   }
 }, []);
 
@@ -33,9 +33,6 @@ useEffect(()=>{
   }
 }, []);
 
-
-scores.sort((b, a) => parseFloat(b.points) - parseFloat(a.points))
-
   return (
     <>
     <Header />
@@ -43,8 +40,6 @@ scores.sort((b, a) => parseFloat(b.points) - parseFloat(a.points))
       <Text style={styles.playerName}>
       
        Player: {playerName} 
-       Points: {scores}
-      
       </Text>
     </View>
     <Footer />
